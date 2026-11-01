@@ -1,522 +1,652 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Daria's engineering portfolio: FPGA systems, embedded software and signal processing.">
-  <title>Daria | Engineering Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daria.exe - Personal Homepage</title>
 
-  <style>
-    :root {
-      --bg: #f5f5f2;
-      --surface: #ffffff;
-      --ink: #20211f;
-      --muted: #777a75;
-      --line: #dedfd9;
-      --accent: #526b60;
-      --soft: #e9eee9;
-      --max: 1120px;
+<style>
+:root {
+    --desktop: #008080;
+    --window: #c0c0c0;
+    --blue: #000080;
+    --white: #ffffff;
+    --black: #000000;
+    --gray: #808080;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--desktop);
+    font-family: Tahoma, "MS Sans Serif", sans-serif;
+    font-size: 13px;
+    color: black;
+    padding-bottom: 48px;
+}
+
+/* DESKTOP */
+
+.desktop {
+    min-height: calc(100vh - 48px);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.desktop-icon {
+    width: 80px;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px black;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.desktop-icon .icon {
+    font-size: 34px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* WINDOWS 98 WINDOW */
+
+.window {
+    background: var(--window);
+    padding: 3px;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    box-shadow: 2px 2px 0 black;
+}
+
+.main-window {
+    width: min(1050px, calc(100% - 20px));
+    margin: 0 auto;
+}
+
+.title-bar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: white;
+    padding: 5px 7px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 28px;
+}
+
+.title-name {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.window-controls {
+    display: flex;
+    gap: 3px;
+}
+
+.window-button {
+    width: 19px;
+    height: 18px;
+    background: var(--window);
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    color: black;
+    font-size: 12px;
+    line-height: 13px;
+    text-align: center;
+}
+
+.menu-bar {
+    display: flex;
+    gap: 20px;
+    padding: 8px 10px;
+    border-bottom: 1px solid #808080;
+}
+
+.menu-bar a {
+    color: black;
+    text-decoration: none;
+}
+
+.menu-bar a:hover {
+    text-decoration: underline;
+}
+
+.window-content {
+    padding: 24px;
+}
+
+/* ABOUT */
+
+.about-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
+    align-items: center;
+    padding: 15px 5px 25px;
+}
+
+.photo-frame {
+    background: white;
+    padding: 8px;
+    border: 2px inset #ddd;
+}
+
+.photo-frame img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 4 / 4.3;
+    object-fit: cover;
+    object-position: center 35%;
+    filter: grayscale(100%);
+}
+
+h1 {
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+h2 {
+    font-size: 21px;
+    margin: 0 0 18px;
+}
+
+h3 {
+    font-size: 15px;
+    margin: 8px 0;
+}
+
+.subtitle {
+    color: #444;
+    font-size: 12px;
+}
+
+.about-text {
+    line-height: 1.7;
+    max-width: 560px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid white;
+    margin: 22px 0;
+}
+
+/* BUTTONS */
+
+.retro-button {
+    display: inline-block;
+    padding: 7px 13px;
+    background: var(--window);
+    color: black;
+    text-decoration: none;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    margin: 5px 5px 5px 0;
+}
+
+.retro-button:active {
+    border-top: 2px solid #404040;
+    border-left: 2px solid #404040;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+/* PROJECTS */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.project-card {
+    background: #d4d0c8;
+    padding: 14px;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-icon {
+    font-size: 27px;
+}
+
+.project-card p {
+    line-height: 1.5;
+    font-size: 12px;
+}
+
+.project-stack {
+    margin-top: auto;
+    padding-top: 12px;
+    color: #444;
+    font-size: 11px;
+}
+
+.tag {
+    background: #000080;
+    color: white;
+    display: inline-block;
+    padding: 3px 6px;
+    font-size: 10px;
+    margin-top: 8px;
+}
+
+/* SKILLS */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.skill-group {
+    padding: 12px;
+    background: #d4d0c8;
+    border: 2px inset white;
+}
+
+.skill-group ul {
+    padding-left: 18px;
+    line-height: 2;
+    margin-bottom: 0;
+}
+
+/* STATUS BAR */
+
+.status-bar {
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    border-top: 1px solid white;
+    font-size: 11px;
+}
+
+.status-item {
+    border: 1px inset white;
+    padding: 3px 7px;
+    flex: 1;
+}
+
+/* TASKBAR */
+
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 42px;
+    background: #c0c0c0;
+    border-top: 2px solid white;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    gap: 7px;
+    z-index: 100;
+}
+
+.start-button {
+    height: 32px;
+    padding: 3px 9px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+    font-size: 13px;
+    background: #c0c0c0;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    cursor: pointer;
+}
+
+.start-button span {
+    font-size: 19px;
+}
+
+.taskbar-window {
+    height: 30px;
+    padding: 6px 14px;
+    background: #c0c0c0;
+    border-top: 2px solid #404040;
+    border-left: 2px solid #404040;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    font-weight: bold;
+    max-width: 230px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.clock {
+    margin-left: auto;
+    border: 2px inset white;
+    padding: 5px 12px;
+    font-size: 12px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+    .desktop {
+        padding: 12px 5px;
     }
 
-    * {
-      box-sizing: border-box;
+    .main-window {
+        width: 100%;
     }
 
-    html {
-      scroll-behavior: smooth;
+    .window-content {
+        padding: 13px;
     }
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
+    .about-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    .photo-frame {
+        width: min(100%, 300px);
+        margin: auto;
     }
 
-    .page {
-      width: min(var(--max), calc(100% - 48px));
-      margin: 0 auto;
+    .project-grid,
+    .skills-grid {
+        grid-template-columns: 1fr;
     }
 
-    header {
-      height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--line);
+    .menu-bar {
+        gap: 13px;
     }
 
-    .wordmark {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: .08em;
-    }
-
-    nav {
-      display: flex;
-      gap: 30px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    nav a:hover,
-    .text-link:hover {
-      color: var(--accent);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: .92fr 1.08fr;
-      gap: 76px;
-      align-items: center;
-      padding: 94px 0 110px;
-    }
-
-    .portrait-wrap {
-      position: relative;
-      max-width: 430px;
-    }
-
-    .portrait-wrap::before {
-      content: "";
-      position: absolute;
-      inset: 16px -16px -16px 16px;
-      border: 1px solid #c9cec7;
-      z-index: 0;
-    }
-
-    .portrait {
-      position: relative;
-      z-index: 1;
-      display: block;
-      width: 100%;
-      aspect-ratio: 4 / 4.3;
-      object-fit: cover;
-      object-position: center 35%;
-      filter: grayscale(100%);
-      background: #ddd;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
+    .taskbar-window {
+        display: none;
     }
 
     h1 {
-      font-size: clamp(48px, 7vw, 82px);
-      line-height: .98;
-      letter-spacing: -.065em;
-      margin: 17px 0 24px;
-      font-weight: 600;
+        font-size: 27px;
     }
-
-    .intro {
-      max-width: 560px;
-      font-size: 17px;
-      color: #555952;
-    }
-
-    .intro strong {
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    .hero-links {
-      display: flex;
-      gap: 22px;
-      margin-top: 32px;
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .text-link {
-      border-bottom: 1px solid #9ba69d;
-      padding-bottom: 4px;
-    }
-
-    section {
-      padding: 76px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 34px;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 30px;
-      letter-spacing: -.04em;
-      font-weight: 600;
-    }
-
-    .section-note {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .project {
-      min-height: 250px;
-      padding: 25px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      transition: transform .2s ease, border-color .2s ease;
-    }
-
-    .project:hover {
-      transform: translateY(-4px);
-      border-color: #aab7ad;
-    }
-
-    .project-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .tag {
-      background: var(--soft);
-      color: var(--accent);
-      padding: 5px 9px;
-      font-size: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .number {
-      color: #a3a69f;
-      font-size: 12px;
-    }
-
-    h3 {
-      font-size: 19px;
-      line-height: 1.25;
-      margin: 27px 0 12px;
-      letter-spacing: -.025em;
-    }
-
-    .project p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .project .stack {
-      margin-top: auto;
-      padding-top: 25px;
-      color: #777e76;
-      font-size: 11px;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 42px;
-    }
-
-    .skill-group h3 {
-      margin: 0 0 15px;
-      font-size: 14px;
-    }
-
-    .skill-group ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .skill-group li {
-      padding: 7px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    footer {
-      padding: 28px 0 42px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 11px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    @media (max-width: 760px) {
-      .page {
-        width: min(100% - 36px, var(--max));
-      }
-
-      header {
-        height: 70px;
-      }
-
-      nav {
-        gap: 15px;
-        font-size: 12px;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        gap: 52px;
-        padding: 58px 0 75px;
-      }
-
-      .portrait-wrap {
-        width: min(82%, 390px);
-        margin: 0 auto;
-      }
-
-      .hero-copy {
-        order: -1;
-      }
-
-      .projects {
-        grid-template-columns: 1fr;
-      }
-
-      .project {
-        min-height: 210px;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      section {
-        padding: 58px 0;
-      }
-
-      .section-head {
-        align-items: flex-end;
-        gap: 15px;
-      }
-
-      .section-note {
-        text-align: right;
-      }
-    }
-
-    @media (max-width: 390px) {
-      nav {
-        gap: 10px;
-      }
-
-      nav a {
-        font-size: 11px;
-      }
-
-      .page {
-        width: calc(100% - 28px);
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
-  <div class="page">
 
-    <header>
-      <a class="wordmark" href="#top">
-        DARIA<span style="color:var(--accent)">.</span>
-      </a>
+<div class="desktop">
 
-      <nav aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-      </nav>
-    </header>
+    <div class="desktop-icon">
+        <span class="icon">💻</span>
+        My Computer
+    </div>
 
-    <main id="top">
+    <div class="desktop-icon">
+        <span class="icon">📁</span>
+        My Projects
+    </div>
 
-      <!-- ABOUT -->
+    <div class="window main-window">
 
-      <section class="hero" id="about" style="border-top:0">
-
-        <div class="portrait-wrap">
-          <img
-              class="portrait"
-              src="profile.jpg"
-              alt="Portrait of Daria"
-          >
-        </div>
-
-        <div class="hero-copy">
-          <div class="eyebrow">
-            Electronics · Embedded Systems · FPGA
-          </div>
-
-          <h1>Hi, I'm<br>Daria.</h1>
-
-          <p class="intro">
-            I'm an <strong>electronics software engineer</strong> working with
-            FPGA-based systems, embedded software and digital signal processing.
-            I'm interested in the connection between electronics, software and
-            real-world measurements, from the first circuit sketch to the data
-            appearing on screen.
-          </p>
-
-          <div class="hero-links">
-            <a class="text-link" href="#projects">
-              Explore projects ↓
-            </a>
-
-            <a class="text-link" href="#skills">
-              What I work with
-            </a>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- PROJECTS -->
-
-      <section id="projects">
-
-        <div class="section-head">
-          <h2>Selected projects</h2>
-          <span class="section-note">
-            A work in progress, just like the best experiments.
-          </span>
-        </div>
-
-        <div class="projects">
-
-          <article class="project">
-            <div class="project-top">
-              <span class="tag">In development</span>
-              <span class="number">01</span>
+        <div class="title-bar">
+            <div class="title-name">
+                <span>🌐</span>
+                Daria.exe - Personal Homepage
             </div>
 
-            <h3>Biopotential Acquisition System</h3>
-
-            <p>
-              A hardware and software platform for acquiring low-amplitude
-              biopotential signals, with an EEG signal as the main test case.
-            </p>
-
-            <div class="stack">
-              Zynq · ADS1299 · SPI · C#
+            <div class="window-controls">
+                <div class="window-button">_</div>
+                <div class="window-button">□</div>
+                <div class="window-button">×</div>
             </div>
-          </article>
-
-          <article class="project">
-            <div class="project-top">
-              <span class="tag">FPGA</span>
-              <span class="number">02</span>
-            </div>
-
-            <h3>FPGA-Based DAC Platform</h3>
-
-            <p>
-              Bring-up and control of a high-speed data-converter platform,
-              including device configuration and JESD204B link diagnostics.
-            </p>
-
-            <div class="stack">
-              Zynq-7000 · AD9174 · JESD204B · UART / SPI
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="project-top">
-              <span class="tag">Experiments</span>
-              <span class="number">03</span>
-            </div>
-
-            <h3>Computer Vision & Image Processing</h3>
-
-            <p>
-              A collection of practical image-processing experiments,
-              from basic transformations to image analysis and recognition.
-            </p>
-
-            <div class="stack">
-              Python · OpenCV · Image Processing
-            </div>
-          </article>
-
-        </div>
-      </section>
-
-      <!-- SKILLS -->
-
-      <section id="skills">
-
-        <div class="section-head">
-          <h2>Skills & tools</h2>
-          <span class="section-note">
-            Technologies I use and explore
-          </span>
         </div>
 
-        <div class="skills-grid">
+        <div class="menu-bar">
+            <a href="#about"><u>A</u>bout</a>
+            <a href="#projects"><u>P</u>rojects</a>
+            <a href="#skills"><u>S</u>kills</a>
+        </div>
 
-          <div class="skill-group">
-            <h3>Hardware & FPGA</h3>
-            <ul>
-              <li>Xilinx Zynq</li>
-              <li>FPGA-based systems</li>
-              <li>ADC / DAC interfaces</li>
-              <li>Vivado</li>
-              <li>KiCad</li>
-            </ul>
-          </div>
+        <div class="window-content">
 
-          <div class="skill-group">
-            <h3>Embedded & Software</h3>
-            <ul>
-              <li>C / C++</li>
-              <li>C# · Windows Forms</li>
-              <li>Python</li>
-              <li>UART · SPI · I²C</li>
-              <li>Ethernet fundamentals</li>
-            </ul>
-          </div>
+            <!-- ABOUT -->
 
-          <div class="skill-group">
-            <h3>Engineering interests</h3>
-            <ul>
-              <li>Digital signal processing</li>
-              <li>Biopotential acquisition</li>
-              <li>Measurement systems</li>
-              <li>Computer vision</li>
-              <li>Hardware / software integration</li>
-            </ul>
-          </div>
+            <section id="about">
+
+                <div class="about-layout">
+
+                    <div class="photo-frame">
+                        <img src="profile.jpg" alt="Portrait of Daria">
+                    </div>
+
+                    <div class="about-text">
+
+                        <div class="subtitle">
+                            ELECTRONICS · EMBEDDED SYSTEMS · FPGA
+                        </div>
+
+                        <h1>Hi, I'm Daria!</h1>
+
+                        <p>
+                            I'm an <b>electronics software engineer</b>
+                            working with FPGA-based systems, embedded
+                            software and digital signal processing.
+                        </p>
+
+                        <p>
+                            I'm interested in the connection between
+                            electronics, software and real-world
+                            measurements, from the first circuit sketch
+                            to the data appearing on screen.
+                        </p>
+
+                        <a class="retro-button" href="#projects">
+                            View my projects
+                        </a>
+
+                        <a class="retro-button" href="#skills">
+                            My skills
+                        </a>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <hr>
+
+            <!-- PROJECTS -->
+
+            <section id="projects">
+
+                <h2>📂 My Projects</h2>
+
+                <p>
+                    Welcome to my project folder! Here are some things
+                    I've been working on.
+                </p>
+
+                <div class="project-grid">
+
+                    <article class="project-card">
+
+                        <div class="project-icon">📡</div>
+
+                        <span class="tag">IN DEVELOPMENT</span>
+
+                        <h3>Biopotential Acquisition System</h3>
+
+                        <p>
+                            A hardware and software platform for acquiring
+                            low-amplitude biopotential signals, with EEG
+                            as the main test case.
+                        </p>
+
+                        <div class="project-stack">
+                            Zynq · ADS1299 · SPI · C#
+                        </div>
+
+                    </article>
+
+                    <article class="project-card">
+
+                        <div class="project-icon">⚡</div>
+
+                        <span class="tag">FPGA</span>
+
+                        <h3>FPGA-Based DAC Platform</h3>
+
+                        <p>
+                            Bring-up and control of a high-speed
+                            data-converter platform, including device
+                            configuration and JESD204B diagnostics.
+                        </p>
+
+                        <div class="project-stack">
+                            Zynq-7000 · AD9174 · JESD204B
+                        </div>
+
+                    </article>
+
+                    <article class="project-card">
+
+                        <div class="project-icon">🖼️</div>
+
+                        <span class="tag">EXPERIMENTS</span>
+
+                        <h3>Computer Vision & Image Processing</h3>
+
+                        <p>
+                            Practical image-processing experiments,
+                            from basic transformations to image
+                            analysis and recognition.
+                        </p>
+
+                        <div class="project-stack">
+                            Python · OpenCV
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+            <hr>
+
+            <!-- SKILLS -->
+
+            <section id="skills">
+
+                <h2>🛠️ Skills & Tools</h2>
+
+                <p>
+                    A collection of technologies I use and explore.
+                </p>
+
+                <div class="skills-grid">
+
+                    <div class="skill-group">
+                        <h3>💾 Hardware & FPGA</h3>
+                        <ul>
+                            <li>Xilinx Zynq</li>
+                            <li>FPGA-based systems</li>
+                            <li>ADC / DAC interfaces</li>
+                            <li>Vivado</li>
+                            <li>KiCad</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3>💻 Embedded & Software</h3>
+                        <ul>
+                            <li>C / C++</li>
+                            <li>C# · Windows Forms</li>
+                            <li>Python</li>
+                            <li>UART · SPI · I²C</li>
+                            <li>Ethernet</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3>🔬 Engineering</h3>
+                        <ul>
+                            <li>Digital signal processing</li>
+                            <li>Biopotential acquisition</li>
+                            <li>Measurement systems</li>
+                            <li>Computer vision</li>
+                            <li>Hardware integration</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </section>
 
         </div>
-      </section>
 
-    </main>
+        <div class="status-bar">
+            <div class="status-item">Done</div>
+            <div class="status-item">Daria's homepage</div>
+            <div class="status-item">100%</div>
+        </div>
 
-    <footer>
-      <span>© 2026 Daria</span>
-      <span>Built with curiosity and a little bit of solder.</span>
-    </footer>
+    </div>
 
-  </div>
+</div>
+
+<!-- WINDOWS TASKBAR -->
+
+<div class="taskbar">
+
+    <button class="start-button" onclick="alert('Welcome to Daria.exe!')">
+        <span>🪟</span> Start
+    </button>
+
+    <div class="taskbar-window">
+        🌐 Daria
+    </div>
+
+    <div class="clock" id="clock">
+        00:00
+    </div>
+
+</div>
+
+<script>
+function updateClock() {
+    const now = new Date();
+
+    document.getElementById("clock").textContent =
+        now.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
 </body>
 </html>
