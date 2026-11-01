@@ -506,45 +506,7 @@ hr {
         </div>
 
         <div class="window-content">
-<!-- PHOTO GALLERY -->
 
-<div class="gallery-section">
-
-    <div class="gallery-viewport">
-
-        <div class="gallery-track" id="galleryTrack">
-
-            <div class="gallery-group">
-                <img src="gallery-1.jpg" alt="Gallery photo 1">
-                <img src="gallery-2.jpg" alt="Gallery photo 2">
-                <img src="gallery-3.jpg" alt="Gallery photo 3">
-                <img src="gallery-4.jpg" alt="Gallery photo 4">
-            </div>
-
-            <!-- Duplicate images for seamless scrolling -->
-
-            <div class="gallery-group" aria-hidden="true">
-                <img src="gallery-1.jpg" alt="">
-                <img src="gallery-2.jpg" alt="">
-                <img src="gallery-3.jpg" alt="">
-                <img src="gallery-4.jpg" alt="">
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="gallery-controls">
-        <button
-            class="gallery-button"
-            id="galleryToggle"
-            onclick="toggleGallery()"
-        >
-            Остановить галерею
-        </button>
-    </div>
-
-</div>
             <!-- ABOUT -->
 
             <section id="about">
@@ -590,7 +552,45 @@ hr {
             </section>
 
             <hr>
+<!-- PHOTO GALLERY -->
 
+<div class="gallery-section">
+
+    <div class="gallery-viewport">
+
+        <div class="gallery-track" id="galleryTrack">
+
+            <div class="gallery-group">
+                <img src="gallery-1.jpg" alt="Gallery photo 1">
+                <img src="gallery-2.jpg" alt="Gallery photo 2">
+                <img src="gallery-3.jpg" alt="Gallery photo 3">
+                <img src="gallery-4.jpg" alt="Gallery photo 4">
+            </div>
+
+            <!-- Duplicate images for seamless scrolling -->
+
+            <div class="gallery-group" aria-hidden="true">
+                <img src="gallery-1.jpg" alt="">
+                <img src="gallery-2.jpg" alt="">
+                <img src="gallery-3.jpg" alt="">
+                <img src="gallery-4.jpg" alt="">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="gallery-controls">
+        <button
+            class="gallery-button"
+            id="galleryToggle"
+            onclick="toggleGallery()"
+        >
+            Остановить галерею
+        </button>
+    </div>
+
+</div>
             <!-- PROJECTS -->
 
             <section id="projects">
@@ -769,9 +769,9 @@ setInterval(updateClock, 1000);
     track.classList.toggle("paused");
 
     if (track.classList.contains("paused")) {
-        button.textContent = "Запустить галерею";
+        button.textContent = "Play gallery";
     } else {
-        button.textContent = "Остановить галерею";
+        button.textContent = "Pause gallery";
     }
 }
 </script>
