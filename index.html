@@ -510,6 +510,43 @@ hr {
 .desktop-icon:focus {
     outline: none;
 }
+    .scream-desktop-icon {
+    position: fixed;
+    bottom: 35px;
+    left: 20px;
+    width: 85px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 2px;
+    cursor: default;
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    z-index: 100;
+    user-select: none;
+}
+
+.scream-icon-image {
+    font-size: 32px;
+    line-height: 38px;
+}
+
+.scream-icon-label {
+    padding: 2px 4px;
+}
+
+.scream-desktop-icon.selected .scream-icon-label {
+    background: #000080;
+    color: white;
+    outline: 1px dotted white;
+}
+
+.scream-desktop-icon.selected .scream-icon-image {
+    filter: brightness(1.2);
+}
 </style>
 </head>
 
@@ -845,14 +882,24 @@ function openMyProjects() {
 function openMyComputer() {
     // Пока ничего не делаем
     }
+    function selectScreamIcon(icon) {
+    document.querySelectorAll(".scream-desktop-icon").forEach(item => {
+        item.classList.remove("selected");
+    });
+
+    icon.classList.add("selected");
+}
+
+function openScream() {
+    window.location.href = "scream.html";
+}
 </script>
-<div style="text-align: center; margin: 35px 0 20px;">
-    <a href="scream.html"
-       style="color: white; text-decoration: none; font-family: Tahoma, sans-serif;">
-        <span style="font-size: 28px;">💾</span>
-        <br>
-        <span style="font-size: 13px;">scream.exe</span>
-    </a>
+<div class="scream-desktop-icon"
+     onclick="selectScreamIcon(this)"
+     ondblclick="openScream()"
+     tabindex="0">
+    <span class="scream-icon-image">💾</span>
+    <span class="scream-icon-label">scream.exe</span>
 </div>
 </body>
 </html>
