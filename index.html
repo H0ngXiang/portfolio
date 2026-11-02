@@ -502,9 +502,17 @@ hr {
     line-height: 1;
 }
 
+/* Выделение только названия */
 .desktop-icon.selected {
-    background: rgba(0, 0, 128, 0.45);
-    border: 1px dotted white;
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+.desktop-icon.selected span:not(.icon-image) {
+    background: #000080;
+    color: white;
+    outline: 1px dotted white;
+    padding: 2px 4px;
 }
 
 .desktop-icon:focus {
