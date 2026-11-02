@@ -467,6 +467,48 @@ hr {
         font-size: 27px;
     }
 }
+    /* DESKTOP ICONS */
+.desktop-icons {
+    position: fixed;
+    top: 75px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    z-index: 10;
+}
+
+.desktop-icon {
+    width: 85px;
+    min-height: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px;
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    cursor: default;
+    border: 1px solid transparent;
+    user-select: none;
+}
+
+.desktop-icon .icon-image {
+    font-size: 32px;
+    line-height: 1;
+}
+
+.desktop-icon.selected {
+    background: rgba(0, 0, 128, 0.45);
+    border: 1px dotted white;
+}
+
+.desktop-icon:focus {
+    outline: none;
+}
 </style>
 </head>
 
@@ -474,15 +516,25 @@ hr {
 
 <div class="desktop">
 
-    <div class="desktop-icon">
-        <span class="icon">💻</span>
-        My Computer
+  <div class="desktop-icons">
+
+    <div class="desktop-icon"
+         onclick="selectIcon(this)"
+         ondblclick="openMyComputer()"
+         tabindex="0">
+        <span class="icon-image">💻</span>
+        <span>My Computer</span>
     </div>
 
-    <div class="desktop-icon">
-        <span class="icon">📁</span>
-        My Projects
+    <div class="desktop-icon"
+         onclick="selectIcon(this)"
+         ondblclick="openMyProjects()"
+         tabindex="0">
+        <span class="icon-image">📁</span>
+        <span>My Projects</span>
     </div>
+
+</div>
 
     <div class="window main-window">
 
@@ -774,6 +826,23 @@ setInterval(updateClock, 1000);
         button.textContent = "Pause gallery";
     }
 }
+    function selectIcon(icon) {
+    document.querySelectorAll(".desktop-icon").forEach(item => {
+        item.classList.remove("selected");
+    });
+
+    icon.classList.add("selected");
+}
+
+function openMyProjects() {
+    window.open(
+        "https://github.com/H0ngXiang?tab=repositories",
+        "_blank"
+    );
+}
+
+function openMyComputer() {
+    // Пока ничего не делаем
 </script>
 
 </body>
