@@ -510,23 +510,11 @@ hr {
 .desktop-icon:focus {
     outline: none;
 }
-    .scream-desktop-icon {
+.scream-desktop-icon {
     position: fixed;
-    bottom: 35px;
-    left: 20px;
-    width: 85px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    padding: 5px 2px;
-    cursor: default;
-    color: white;
-    font-family: Tahoma, sans-serif;
-    font-size: 12px;
-    text-align: center;
+    bottom: 43px;
+    left: 12px;
     z-index: 100;
-    user-select: none;
 }
 
 .scream-icon-image {
@@ -882,24 +870,17 @@ function openMyProjects() {
 function openMyComputer() {
     // Пока ничего не делаем
     }
-    function selectScreamIcon(icon) {
-    document.querySelectorAll(".scream-desktop-icon").forEach(item => {
-        item.classList.remove("selected");
-    });
-
-    icon.classList.add("selected");
-}
 
 function openScream() {
     window.location.href = "scream.html";
 }
 </script>
-<div class="scream-desktop-icon"
-     onclick="selectScreamIcon(this)"
+<div class="desktop-icon scream-desktop-icon"
+     onclick="selectIcon(this)"
      ondblclick="openScream()"
      tabindex="0">
-    <span class="scream-icon-image">💾</span>
-    <span class="scream-icon-label">scream.exe</span>
+    <span class="icon-image">💾</span>
+    <span>scream.exe</span>
 </div>
 </body>
 </html>
